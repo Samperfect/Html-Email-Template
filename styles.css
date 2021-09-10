@@ -41,7 +41,6 @@ header .headline{
 }
 header .headline::first-letter{
     font-size: 35px;
-    /* color: var(--color1); */
 }
 .nav-links{
     width: 100%;
@@ -244,27 +243,33 @@ footer a img{
 
 
  @media screen and (max-width: 600px){
+    header .headline{
+        font-size: 20px;
+    }
+    header .headline::first-letter{
+        font-size: 30px;
+    }
     .section-2{
         padding: 0px
     }
      .section-2 a{   
-    margin: 8px;    
+    margin: 5px;    
     }
     .section-2 .container img{
         padding-bottom: 30px;          
      }
      #category{
-         font-size: 14px;
+         font-size: 12px;
      }
      #desc{
-        font-size: 12px;       
+        font-size: 10px;       
     }
     .section-2 .container div b{   
-       font-size: 12px;
+       font-size: 10px;
       }
      .section-2 .container div #discount{   
-       font-size: 12px;
-    padding: 3px;
+       font-size: 10px;
+        padding: 3px;
       }
       footer{        
         padding: 0 10px;
