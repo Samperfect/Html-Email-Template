@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
 :root{
 
     --color1: #FF6A2B;
@@ -11,7 +13,7 @@
 }
 body{
     background-color: #eeeeee;
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
     padding: 2em 0;
 }
 main{
@@ -37,6 +39,10 @@ header .headline{
     font-size: 25px;
     color: var(--color2);
 }
+header .headline::first-letter{
+    font-size: 35px;
+    /* color: var(--color1); */
+}
 .nav-links{
     width: 100%;
     display: flex;
@@ -53,6 +59,12 @@ header .headline{
     border-bottom: 1px solid var(--color2);
     color: var(--color2);
 }
+.nav-links a:hover{
+    color: #e17575;
+    border-bottom: 1px solid #e17575;
+
+    
+}
 .section-1{
     width: 100%;
     margin: 1em 0 1em 0;
@@ -62,13 +74,14 @@ header .headline{
    color: var(--color1);
    text-align: center;
    margin-bottom: 30px;
-   font-weight: bold;
+   font-weight: 600;
   font-size: 15px;
 
 }
 .section-1 > p span{
   font-size: 20px;
   color: #df3421;
+  margin: 0 3px;
 }
 .section-1 .article{        
     display: flex;    
@@ -160,7 +173,7 @@ header .headline{
 .section-2 a{
     width: 35%;
     background-color: var(--color);
-    margin: 10px;
+    margin: 15px 15px;
     text-decoration: none;
 
 }
@@ -207,12 +220,13 @@ header .headline{
     padding: 8px;
     background-color: #ffece3;
     color: #d86533;  
-   font-weight: 700;
+   font-weight: 600;
   font-size: 15px;
 
  }
 footer{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     width: 100%;
@@ -221,7 +235,7 @@ footer{
 
 footer a{
     margin: 20px;
-    width: 45%;
+    width: 42%;
 }
 footer a img{
     width: 100%;
@@ -255,7 +269,7 @@ footer a img{
       footer{        
         padding: 0 10px;
     }
-    footer img{
+    footer a{
         margin: 10px;
     }
  }
