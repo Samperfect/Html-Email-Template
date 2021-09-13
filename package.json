@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "fast-csv": "^4.3.6",
     "multer": "^1.4.3",
@@ -28,5 +30,8 @@
   "homepage": "https://github.com/Samperfect/Html-Email-Template#readme",
   "devDependencies": {
     "nodemon": "^2.0.12"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }

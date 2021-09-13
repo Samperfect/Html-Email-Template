@@ -5,11 +5,13 @@ const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const excel = require('xlsx');
+require('dotenv').config();
 
 // creating the app object
 const app = express();
 
 app.use(express.static('public'));
+app.set('view engine', 'ejs');
 
 const port = process.env.port || 5000;
 var html = path.resolve(__dirname, 'public', 'email.html');
@@ -34,6 +36,10 @@ const csvFilter = (req, file, cb) => {
   }
 };
 const upload = multer({ storage: storage });
+
+app.get('/', (req, res) => {
+  res.render('home');
+});
 
 app.post('/upload', upload.any(), async (req, res) => {
   try {
@@ -96,11 +102,16 @@ app.post('/upload', upload.any(), async (req, res) => {
       Body: final,
     };
 
-    let status = await Nodemailing.send(msg);
+    Nodemailing.send(msg);
 
-    res.json({
-      data: status,
-    });
+    res.redirect(
+      `/?message=Your email has been successfully sent&class=alert-success`
+    );
+    return;
+
+    // res.json({
+    //   data: status,
+    // });
 
     // fs.createReadStream(filePath)
     //   .pipe(csv.parse({ headers: true }))
@@ -158,10 +169,15 @@ app.post('/upload', upload.any(), async (req, res) => {
     //     return;
     //   });
   } catch (error) {
-    console.log('catch error-', error);
-    res.status(500).send({
-      message: 'Could not upload the file: ' + req.file.originalname,
-    });
+    // console.log('catch error-', error);
+    res.redirect(
+      `/?message=There was an error in the data you sent.&class=alert-danger`
+    );
+    return;
+    // res.status(500).send({
+    //   message: 'Could not upload the file: ' + req.file.originalname,
+    // });
+    return;
   }
 });
 
