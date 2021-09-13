@@ -4,7 +4,9 @@
   "description": "ETONNG is an online business place owned and managed by ETON MULITI-BUSINESS LIMITED, EMB. Ltd. is a leading company registered in Nigeria with a Global scope of linking and impacting the world through:",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +15,8 @@
     "express": "^4.17.1",
     "fast-csv": "^4.3.6",
     "multer": "^1.4.3",
-    "nodemailing": "^1.1.0"
+    "nodemailing": "^1.1.0",
+    "xlsx": "^0.17.1"
   },
   "repository": {
     "type": "git",
@@ -22,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/Samperfect/Html-Email-Template/issues"
   },
-  "homepage": "https://github.com/Samperfect/Html-Email-Template#readme"
+  "homepage": "https://github.com/Samperfect/Html-Email-Template#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
 }
