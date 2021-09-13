@@ -13,7 +13,7 @@ const app = express();
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-const port = process.env.port || 5000;
+const PORT = process.env.PORT || 8080;
 var html = path.resolve(__dirname, 'public', 'email.html');
 var row = path.resolve(__dirname, 'public', 'rows.html');
 
@@ -181,6 +181,6 @@ app.post('/upload', upload.any(), async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log('Now listening at port ' + port + '....');
+app.listen(PORT, () => {
+  console.log('Now listening at port ' + PORT + '....');
 });
