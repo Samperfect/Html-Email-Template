@@ -12,6 +12,7 @@ const app = express();
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 8080;
 var html = path.resolve(__dirname, 'public', 'email.html');
@@ -38,7 +39,23 @@ const csvFilter = (req, file, cb) => {
 const upload = multer({ storage: storage });
 
 app.get('/', (req, res) => {
-  res.render('home');
+  res.render('login');
+  return;
+});
+
+app.post('/email', (req, res) => {
+  if (!req.body) {
+    res.redirect('/');
+    return;
+  }
+
+  if (req.body.username === 'eton' && req.body.password === 'etong') {
+    res.render('home');
+    return;
+  }
+
+  res.redirect('/');
+  return;
 });
 
 app.post('/upload', upload.any(), async (req, res) => {
@@ -90,6 +107,8 @@ app.post('/upload', upload.any(), async (req, res) => {
       rows: product,
       bannerImage: ban[0].bannerImage,
       bannerLink: ban[0].bannerLink,
+      bannerImage2: ban[0].bannerImage2,
+      bannerLink2: ban[0].bannerLink2,
     });
     // 'queensong01@gmail.com',
     const msg = {
