@@ -181,6 +181,9 @@ app.post('/upload', store.upload.any(), async (req, res) => {
       .sheet_to_json(file.Sheets[sheets[2]])
       .map(({ emails }) => emails);
 
+    // res.json({ customers });
+    // return;
+
     let product = ``;
     for (let i = 0; i < csvData.length; i++) {
       data = {
