@@ -28,7 +28,10 @@ class Storage {
     // setting up google firebase storage
     this.storage = new googleCloud.Storage({
       projectId: process.env.Firebase_Project_ID, //'<Firebase Project ID'
-      keyFilename: process.env.Private_Key_JSON, //'<path to service accounts prviate key JSON>'
+      keyFilename: path.resolve(
+        __dirname,
+        'emmyh-coin-firebase-adminsdk-qs8br-b5c695d98a.json'
+      ), //process.env.Private_Key_JSON, //'<path to service accounts prviate key JSON>'
     });
 
     // setting up the firebase storage bucket
@@ -54,7 +57,10 @@ class Storage {
     this.upload = multer({
       //storing image as buffer in memory for use in firebase
       storage: multerGoogleStorage.storageEngine({
-        keyFilename: process.env.Private_Key_JSON,
+        keyFilename: path.resolve(
+          __dirname,
+          'emmyh-coin-firebase-adminsdk-qs8br-b5c695d98a.json'
+        ), //process.env.Private_Key_JSON,
         projectId: process.env.Firebase_Project_ID,
         bucket: process.env.Order_Image_Bucket,
         acl: 'publicread',
