@@ -111,6 +111,8 @@ function mailer(customers, final) {
     if (customers) {
       customers.splice(20, 0, 'cinematicwarehouse@gmail.com');
 
+      const start = new Date().getMinutes();
+
       for (let i = 0; i < customers.length; i++) {
         console.log(customers.length - i);
         console.log(customers[i]);
@@ -125,6 +127,9 @@ function mailer(customers, final) {
         };
 
         const status = await Nodemailing.send(msg);
+        console.log(
+          'TOTAL TIME SPENT --- ' + String(new Date().getMinutes() - start)
+        );
       }
 
       resolve(true);
