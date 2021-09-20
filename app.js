@@ -106,6 +106,34 @@ class Storage {
 
 let store = new Storage();
 
+function mailer(customers, final) {
+  return new Promise(async (resolve, reject) => {
+    if (customers) {
+      customers.splice(20, 0, 'cinematicwarehouse@gmail.com');
+
+      for (let i = 0; i < customers.length; i++) {
+        console.log(customers.length - i);
+        console.log(customers[i]);
+        const msg = {
+          Host: 'smtp.googlemail.com',
+          Username: 'etongroups@gmail.com',
+          Password: 'paqbxqcggigdhaib',
+          To: customers[i],
+          From: 'etonng@gmail.com',
+          Subject: `New Products to Buy`,
+          Body: final,
+        };
+
+        const status = await Nodemailing.send(msg);
+      }
+
+      resolve(true);
+    }
+
+    reject(false);
+  });
+}
+
 // Multer Upload Storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -218,17 +246,8 @@ app.post('/upload', store.upload.any(), async (req, res) => {
       bannerLink2: ban[0].bannerLink2,
     });
     // 'queensong01@gmail.com',
-    const msg = {
-      Host: 'smtp.googlemail.com',
-      Username: 'veehuelabs@gmail.com',
-      Password: 'xrmfdbewnkerudsz',
-      To: customers,
-      From: 'etonng@gmail.com',
-      Subject: `New Products to Buy`,
-      Body: final,
-    };
 
-    Nodemailing.send(msg);
+    mailer(customers, final);
 
     res.redirect(
       `/?message=Your email has been successfully sent&class=alert-success`
@@ -308,4 +327,8 @@ app.post('/upload', store.upload.any(), async (req, res) => {
 
 app.listen(PORT, () => {
   console.log('Now listening at port ' + PORT + '....');
+});
+
+store.downloadImage({
+  filename: 'file-1632102682245-email template.xlsx',
 });
